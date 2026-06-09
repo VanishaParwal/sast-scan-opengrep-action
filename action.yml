@@ -99,5 +99,5 @@ runs:
           --pipeline-id "$PIPELINE_ID" \
           --job-url "$JOB_URL" \
           --container-mode \
-          --$SEVERITY_ARG \
+          $SEVERITY_ARG \
           $AI_ARGS
