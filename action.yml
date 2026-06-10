@@ -28,9 +28,9 @@ inputs:
     description: "Label in AccuKnox SaaS for scan results"
     required: true
   severity:
-    description: "Comma-separated severities:MEDIUM, HIGH, CRITICAL"
+    description: "Comma-separated severities: MEDIUM, HIGH, CRITICAL"
     required: false
-    default: "MEDIUM,HIGH,CRITICAL"
+    default: "HIGH"
   accuknox_ai_analysis:
     description: "Enable AI analysis"
     required: false
