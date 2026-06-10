@@ -30,7 +30,7 @@ inputs:
   severity:
     description: "Comma-separated severities: UNKNOWN, LOW, MEDIUM, HIGH, CRITICAL"
     required: false
-    default: "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL"
+    default: "MEDIUM,HIGH,CRITICAL"
   accuknox_ai_analysis:
     description: "Enable AI analysis"
     required: false
