@@ -67,6 +67,12 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Cache SAST tool
+      uses: actions/cache@v4
+      with:
+        path: ~/.local/bin/accuknox
+        key: accuknox-sast-tool-${{ runner.os }}-${{ inputs.scanner_version }}-ai-${{ inputs.accuknox_ai_analysis }}
+
     - name: Run AccuKnox SAST Scan
       shell: bash
       env:
@@ -119,7 +125,7 @@ runs:
         chmod +x "$SCANNER"
 
         echo "Installing local OpenGrep binary and rules (no container image)..."
-        "$SCANNER" tool install --type sast
+        [ -e "$HOME/.local/bin/accuknox/sast/sast" ] || "$SCANNER" tool install --type sast
 
         EXTRA_ARGS=()
 
@@ -157,7 +163,7 @@ runs:
           fi
 
           echo "Installing local CodeAssure binary for AI SAST..."
-          "$SCANNER" tool install --type codeassure
+          [ -e "$HOME/.local/bin/accuknox/codeassure/codeassure" ] || "$SCANNER" tool install --type codeassure
 
           # api_key holds "$VAR" so the secret itself is never written to disk.
           CONFIG_PATH="$TOOL_DIR/codeassure.json"
